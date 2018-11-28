@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Labb1OOAD.Views.MainPage"
+             xmlns:local="clr-namespace:Labb1OOAD.ViewModels;assembly:Labb1OOAD">
+    <ContentPage.BindingContext>
+        <local:ListOfInfo/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Margin="0, 0, 0, 20">
+            <ListView ItemsSource="{Binding ListOfSomeText}">
+
+            </ListView>
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                <BoxView Color="Black" HeightRequest="10"/>
+                <Entry Placeholder="Enter text to save here:" Text="{Binding SomeText}"/>
+                <Button Text="SAVE" Command="{Binding SaveCommand}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Button Text="UNDO"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Button Text="REDO"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
