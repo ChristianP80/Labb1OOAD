@@ -25,7 +25,7 @@ namespace Labb1OOAD.ViewModels
         public ObservableCollection<string> ListOfSomeText
         {
             get { return _listOfSomeText; }
-            private set { _listOfSomeText = value; }
+            private set { SetProperty( ref _listOfSomeText, value); }
 
         }
 
@@ -37,7 +37,8 @@ namespace Labb1OOAD.ViewModels
             );
         }
 
-        private void SaveEntryText(Object obj)
+
+        private void SaveEntryText(object obj)
         {
             _listOfSomeText.Add(SomeText);
             SomeText = "";

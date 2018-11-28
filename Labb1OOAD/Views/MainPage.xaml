@@ -8,9 +8,8 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Margin="0, 0, 0, 20">
-            <ListView ItemsSource="{Binding ListOfSomeText}">
+            <ListView ItemsSource="{Binding ListOfSomeText}"/>
 
-            </ListView>
             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                 <BoxView Color="Black" HeightRequest="10"/>
                 <Entry Placeholder="Enter text to save here:" Text="{Binding SomeText}"/>
