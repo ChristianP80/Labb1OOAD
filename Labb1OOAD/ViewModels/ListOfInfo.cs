@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Labb1OOAD.NewFolder;
 using Xamarin.Forms;
 
 namespace Labb1OOAD.ViewModels
@@ -28,6 +26,9 @@ namespace Labb1OOAD.ViewModels
             private set { SetProperty( ref _listOfSomeText, value); }
 
         }
+        public UndoRedoStack<string> UndoRedo = new UndoRedoStack<string>();
+        public AddStringCommand AddString = new AddStringCommand();
+
 
         public ListOfInfo()
         {
@@ -40,7 +41,8 @@ namespace Labb1OOAD.ViewModels
 
         private void SaveEntryText(object obj)
         {
-            _listOfSomeText.Add(SomeText);
+            _listOfSomeText.Add(UndoRedo.Do(AddString, SomeText));
+            //_listOfSomeText.Add(SomeText);
             SomeText = "";
         }
 

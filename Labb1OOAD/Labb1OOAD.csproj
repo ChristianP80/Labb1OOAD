@@ -15,9 +15,13 @@
   <ItemGroup>
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="CommandPattern\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MainPage.xaml.cs" />
+    <Compile Remove="Commands\ICommand&lt;T&gt;.cs" />
+    <Compile Remove="Commands\UndoRedoStack.cs" />
+    <Compile Remove="Commands\AddStringCommand.cs" />
   </ItemGroup>
  
 </Project>
