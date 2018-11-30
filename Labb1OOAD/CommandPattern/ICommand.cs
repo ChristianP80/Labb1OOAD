@@ -6,6 +6,5 @@ namespace Labb1OOAD.NewFolder
         T Do(T input);
         T Undo();
         T Redo();
-        //T Undo(T input);
     }
 }

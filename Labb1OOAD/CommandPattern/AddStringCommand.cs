@@ -5,8 +5,6 @@ namespace Labb1OOAD.NewFolder
 {
     public class AddStringCommand : ICommand<string>
     {
-        //private string _text;
-        //public string Text { get => _text; set => _text = value; }
 
         private List<string> undoList;
         private List<string> redoList;
@@ -20,19 +18,10 @@ namespace Labb1OOAD.NewFolder
         public string Do(string input)
         {
             undoList.Add(input);
-            if(redoList.Count < 1)
-            {
-                return input;
-            }
-            else
-            {
-                return redoList[redoList.Count - 1];
-            }
+            return input;
 
         }
 
-
-        //public string Undo(string input)
         public string Undo()
         {
             if (undoList.Count < 1)
@@ -46,8 +35,6 @@ namespace Labb1OOAD.NewFolder
                 redoList.Add(stringFromList);
                 return stringFromList;
             }
-
-            //return input;
         }
 
         public string Redo()

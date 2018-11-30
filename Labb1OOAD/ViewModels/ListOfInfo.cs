@@ -71,7 +71,6 @@ namespace Labb1OOAD.ViewModels
         private void SaveEntryText(object obj)
         {
             _listOfSomeText.Add(UndoRedo.Do(AddString, SomeText));
-            //_listOfSomeText.Add(SomeText);
             int test = UndoRedo._undoStack.Count;
             SomeText = "";
         }
