@@ -5,8 +5,8 @@ namespace Labb1OOAD.NewFolder
 {
     public class UndoRedoStack<T>
     {
-        private Stack<ICommand<T>> _undoStack;
-        private Stack<ICommand<T>> _redoStack;
+        public Stack<ICommand<T>> _undoStack;
+        public Stack<ICommand<T>> _redoStack;
 
         public UndoRedoStack()
         {
@@ -26,7 +26,7 @@ namespace Labb1OOAD.NewFolder
             if(_undoStack.Count > 0)
             {
                 ICommand<T> command = _undoStack.Pop();
-                T output = command.Undo(input);
+                T output = command.Undo();
                 _redoStack.Push(command);
                 return output;
             }
@@ -36,19 +36,12 @@ namespace Labb1OOAD.NewFolder
             }
         }
 
-        public T Redo(T input)
+        public T Redo()
         {
-            if(_redoStack.Count > 0)
-            {
                 ICommand<T> command = _redoStack.Pop();
-                T output = command.Do(input);
+                T output = command.Redo();
                 _undoStack.Push(command);
                 return output;
-            }
-            else
-            {
-                return input;
-            }
         }
     }
 }

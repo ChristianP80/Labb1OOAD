@@ -17,10 +17,10 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Button Text="UNDO"/>
+                    <Button Text="UNDO" Command="{Binding UndoCommand}"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Button Text="REDO"/>
+                    <Button Text="REDO" Command="{Binding RedoCommand}"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

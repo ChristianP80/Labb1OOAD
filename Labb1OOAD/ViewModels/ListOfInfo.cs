@@ -16,16 +16,26 @@ namespace Labb1OOAD.ViewModels
             get { return _someText; }
             set { SetProperty(ref _someText, value); }
         }
+        private string _tempText;
+        public string TempText 
+        {
+            get { return _tempText; }
+            set { _tempText = value; }
+        }
 
         private ObservableCollection<string> _listOfSomeText = new ObservableCollection<string>();
         public ICommand SaveCommand { get; private set; }
+        public ICommand UndoCommand { get; private set; }
+        public ICommand RedoCommand { get; private set; }
 
         public ObservableCollection<string> ListOfSomeText
         {
             get { return _listOfSomeText; }
-            private set { SetProperty( ref _listOfSomeText, value); }
+            private set { SetProperty(ref _listOfSomeText, value); }
 
         }
+
+
         public UndoRedoStack<string> UndoRedo = new UndoRedoStack<string>();
         public AddStringCommand AddString = new AddStringCommand();
 
@@ -36,13 +46,33 @@ namespace Labb1OOAD.ViewModels
                 execute: SaveEntryText,
                 canExecute: obj => { return true; }
             );
+            UndoCommand = new Command(
+                execute: Undo,
+                canExecute: obj => { return true; }
+            );
+            RedoCommand = new Command(
+                execute: Redo,
+                canExecute: obj => { return true; }
+            );
         }
 
+        private void Redo(object obj)
+        {
+            if(UndoRedo._redoStack.Count > 0)
+                _listOfSomeText.Add(UndoRedo.Redo());
+        }
+
+        private void Undo(object obj)
+        {
+            if(_listOfSomeText.Count > 0)
+            _listOfSomeText.Remove(UndoRedo.Undo(_listOfSomeText[_listOfSomeText.Count - 1]));
+        }
 
         private void SaveEntryText(object obj)
         {
             _listOfSomeText.Add(UndoRedo.Do(AddString, SomeText));
             //_listOfSomeText.Add(SomeText);
+            int test = UndoRedo._undoStack.Count;
             SomeText = "";
         }
 

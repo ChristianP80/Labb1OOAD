@@ -4,6 +4,8 @@ namespace Labb1OOAD.NewFolder
     public interface ICommand<T>
     {
         T Do(T input);
-        T Undo(T input);
+        T Undo();
+        T Redo();
+        //T Undo(T input);
     }
 }
